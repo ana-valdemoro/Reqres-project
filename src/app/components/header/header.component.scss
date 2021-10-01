@@ -1,0 +1,16 @@
+@import "../../../styles.scss";
+
+.navbar{
+    background: $primary-color;
+
+    #{&}-menu{
+        display: flex;
+        list-style: none;
+        justify-content: flex-end;
+        a{
+            color: $primary-text-color;
+            padding: 10px
+        }
+    }
+}
+
