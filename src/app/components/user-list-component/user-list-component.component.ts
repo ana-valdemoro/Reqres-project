@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/models/User';
+import { UserService } from '../services/userService';
 
 @Component({
   selector: 'app-user-list-component',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list-component.component.scss']
 })
 export class UserListComponentComponent implements OnInit {
-
-  constructor() { }
+  users: User[] = [];
+  userSubscription: Subscription | undefined;
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.subscribeToUserList();
   }
+  subscribeToUserList() {
+    this.userSubscription = this.userService.getUsersList().subscribe(users => {
+      this.users = users;
+    })
+
+  }
+
+  requestUserRemoval(id: number) {
+    this.userService.deleteUserFromList(id);
+  }
+
 
 }

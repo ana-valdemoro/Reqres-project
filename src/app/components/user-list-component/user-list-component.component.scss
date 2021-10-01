@@ -1,0 +1,17 @@
+@import "../../../styles.scss";
+.table{
+    border: 2px solid black;
+    padding: 2em;
+    margin: 2em;
+}
+.element-table{
+    border: 2px solid $primary-color;
+    margin-bottom: 1em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+
+    span{
+        padding: 5px;
+    }
+}

@@ -1,1 +1,11 @@
-<p>user-list-component works!</p>
+<main class="container">
+  <h1>User list</h1>
+  <div class="table">
+    <div *ngFor="let user of users" class="element-table">
+      <span>{{user.first_name}} {{user.last_name}}</span>
+      <span>{{user.email}} </span>
+      <button (click)="requestUserRemoval(user.id)" >Delete User</button>
+      <button>View details</button>
+    </div>
+  </div>
+</main>
