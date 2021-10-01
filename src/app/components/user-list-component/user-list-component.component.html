@@ -1,11 +1,24 @@
 <main class="container">
   <h1>User list</h1>
   <div class="table">
-    <div *ngFor="let user of users" class="element-table">
-      <span>{{user.first_name}} {{user.last_name}}</span>
-      <span>{{user.email}} </span>
-      <button (click)="requestUserRemoval(user.id)" >Delete User</button>
+    <div
+      *ngFor="
+        let user of users
+          | paginate
+            : {
+                itemsPerPage: pageSize,
+                currentPage: page,
+                totalItems: total
+              }
+      "
+      class="element-table"
+    >
+      <span>{{ user.first_name }} {{ user.last_name }}</span>
+      <span>{{ user.email }}</span>
+      <button (click)="requestUserRemoval(user.id)">Delete User</button>
       <button>View details</button>
     </div>
+    <pagination-controls (pageChange)="tabSize($event)">
+    </pagination-controls>
   </div>
 </main>

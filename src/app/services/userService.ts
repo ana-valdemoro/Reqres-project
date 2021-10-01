@@ -12,16 +12,7 @@ export class UserService {
     private userList$ = new BehaviorSubject<User[]>([]);
     private users: User[] = [];
 
-    constructor(private userProvider: UserProvider) {
-        this.initializeUserService("1");
-    }
-
-    initializeUserService(page: string) {
-        this.userProvider.getUsers(page).then(users => {
-            this.users = users;
-            this.setUserList();
-        });
-    }
+    constructor(private userProvider: UserProvider) {}
 
     setUserList() {
         this.userList$.next(this.users);
@@ -31,6 +22,15 @@ export class UserService {
         return this.userList$.asObservable();
     }
 
+    async requestUserBatch(page:string):Promise<any>{
+        return this.userProvider.getUsersPerPage(page)
+            .then(res =>{
+                this.users = res.data;
+                this.setUserList();
+                return res;
+            });
+    }
+ 
     deleteUserFromList(id: number): void {
         this.userProvider.deleteUser(id)
             .then(() => {

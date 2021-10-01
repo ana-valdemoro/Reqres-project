@@ -17,6 +17,9 @@ import { User } from "../models/User";
       });
     }
     
+    getUsersPerPage(page:string): Promise<any> {
+      return this.http.get<any>(this.route+`?page=${page}`).toPromise();
+    }
     deleteUser(userId : number): Promise<User>{
       return this.http.delete<User>(this.route + `/${userId}`).toPromise();
     }
