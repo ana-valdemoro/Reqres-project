@@ -20,5 +20,9 @@ import { User } from "../models/User";
     deleteUser(userId : number): Promise<User>{
       return this.http.delete<User>(this.route + `/${userId}`).toPromise();
     }
+
+    createUser(user: unknown): Promise<User>{
+      return this.http.post<User>(this.route, user).toPromise();
+    }
   
   }

@@ -1,1 +1,10 @@
-<p>new-user-component works!</p>
+<h1>Create User</h1>
+<form  [formGroup] = "userForm"  (ngSubmit)="onCreateUser()"class="modal-form">
+    <label>Nombre: </label>
+    <input  type="text" name="name" formControlName="name">
+    <label>Apellido: </label>
+    <input type="text" name="lastName" formControlName ="lastName">
+    <label>Email: </label>
+    <input type="text" name="email" formControlName ="email">
+    <button>Añadir</button>
+</form>
