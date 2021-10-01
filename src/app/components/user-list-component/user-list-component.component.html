@@ -8,7 +8,7 @@
             : {
                 itemsPerPage: pageSize,
                 currentPage: page,
-                totalItems: total
+                totalItems: total   
               }
       "
       class="element-table"
@@ -18,7 +18,6 @@
       <button (click)="requestUserRemoval(user.id)">Delete User</button>
       <button>View details</button>
     </div>
-    <pagination-controls (pageChange)="tabSize($event)">
-    </pagination-controls>
+    <pagination-controls (pageChange)="tabSize($event)"></pagination-controls>
   </div>
 </main>
