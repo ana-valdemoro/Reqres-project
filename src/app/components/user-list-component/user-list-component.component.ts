@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/User';
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/userService';
   templateUrl: './user-list-component.component.html',
   styleUrls: ['./user-list-component.component.scss']
 })
-export class UserListComponentComponent implements OnInit {
+export class UserListComponentComponent implements OnInit, OnDestroy {
   users: User[] = [];
   userSubscription: Subscription | undefined;
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
@@ -22,6 +22,9 @@ export class UserListComponentComponent implements OnInit {
     this.checkForQueryParams();
     this.subscribeToUserList();
     this.getUserPerPage();
+  }
+  ngOnDestroy(): void {
+    this.userSubscription?.unsubscribe();
   }
 
   checkForQueryParams():void {
