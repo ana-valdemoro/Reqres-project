@@ -1,12 +1,18 @@
 <main class="container">
   <h1>User list</h1>
+  <label>Show: </label>
+  <select (change)="changePageSize()" [(ngModel)]='sizePerpage' class="custom-select">
+    <option *ngFor="let size of pageSizes" >
+      {{ size }}
+    </option>
+  </select>
   <div class="table">
     <div
       *ngFor="
         let user of users
           | paginate
             : {
-                itemsPerPage: pageSize,
+                itemsPerPage: sizePerpage,
                 currentPage: page,
                 totalItems: total   
               }
@@ -18,6 +24,6 @@
       <button (click)="requestUserRemoval(user.id)">Delete User</button>
       <button>View details</button>
     </div>
-    <pagination-controls (pageChange)="tabSize($event)"></pagination-controls>
+    <pagination-controls (pageChange)="ChangePage($event)"></pagination-controls>
   </div>
 </main>
