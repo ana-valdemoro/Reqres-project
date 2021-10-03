@@ -7,7 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { UserListComponentComponent } from './components/user-list-component/user-list-component.component';
 import { NewUserComponentComponent } from './components/new-user-component/new-user-component.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
