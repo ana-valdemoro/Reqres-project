@@ -22,4 +22,5 @@ La estructura del proyecto se subdivide en las siguientes carpetas:
 **Segundo**, se debe instalar todas las dependencias del proyecto, por lo que ejecutamos: `npm install`  
 **Tercero**, ejecutamos la instrucción `npm start` para iniciar el proyecto.
 
-
+## Nota 
+Se han implementado las funcionalidades solicitadas excepto el actualizar la información del usuario.
